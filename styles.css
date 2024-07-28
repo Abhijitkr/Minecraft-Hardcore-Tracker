@@ -1,7 +1,8 @@
 body {
   font-family: "Arial", sans-serif;
   text-align: center;
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  background-color: transparent;
   color: #ffffff;
   margin: 0;
   padding: 0;
@@ -11,7 +12,8 @@ body {
   height: 100%;
 }
 .container {
-  background-color: #3b3f47;
+  /* background-color: #3b3f47; */
+  background-color: transparent;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -58,7 +60,8 @@ button.active {
   font-size: 1.5em;
 }
 .card {
-  background-color: #444b56;
+  /* background-color: #444b56; */
+  background-color: transparent;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
