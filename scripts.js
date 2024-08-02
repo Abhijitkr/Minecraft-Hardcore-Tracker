@@ -1,6 +1,8 @@
 let timer;
 let isTimerRunning = false;
 let totalSeconds = 0;
+const initialDyingPrice = 40;
+const pricePerMinute = 5.5;
 
 function setInitialTime() {
   const initialDays =
@@ -17,6 +19,7 @@ function setInitialTime() {
     initialHours * 3600 +
     initialMinutes * 60 +
     initialSeconds;
+
   updateTimerDisplay();
   updatePrices();
 }
@@ -29,7 +32,7 @@ function startTimer() {
     timer = setInterval(() => {
       totalSeconds++;
       updateTimerDisplay();
-      if (totalSeconds % 60 === 0) {
+      if (totalSeconds % (15 * 60) === 0) {
         updatePrices();
       }
     }, 1000); // Update every second
@@ -84,14 +87,18 @@ function updateDeathCount() {
 }
 
 function updatePrices() {
-  const totalMinutes = totalSeconds / 60;
-  const dyingPrice = totalMinutes * 10;
-  const waterBucketPrice = dyingPrice * 0.25;
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const additionalPrice = Math.floor((totalMinutes / 15) * pricePerMinute * 15);
+  const dyingPrice = initialDyingPrice + additionalPrice;
+  const waterBucketPrice = Math.floor(dyingPrice / 3);
 
   document.getElementById(
     "dyingPriceResult"
-  ).innerText = `Die Now: ₹ ${dyingPrice.toFixed(0)} INR`;
+  ).innerText = `Die Now: ₹ ${dyingPrice} INR`;
   document.getElementById(
     "waterBucketResult"
-  ).innerText = `Water Bucket: ₹ ${waterBucketPrice.toFixed(0)} INR`;
+  ).innerText = `Water Bucket: ₹ ${waterBucketPrice} INR`;
 }
+
+// Initialize prices initially
+updatePrices();
