@@ -64,7 +64,7 @@ function updateTimerDisplay() {
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
 
-  let displayString = "Timer: ";
+  let displayString = "";
   if (days > 0) {
     displayString += `${days}d `;
   }
@@ -83,7 +83,7 @@ function updateDeathCount() {
   const deathCount = parseInt(document.getElementById("deathCount").value) || 0;
   document.getElementById(
     "deathCounterResult"
-  ).innerText = `Death Count: ${deathCount}`;
+  ).innerText = `Death: ${deathCount}`;
 }
 
 function updatePrices() {
